@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import { createClient } from "@/lib/supabase/server";
 import { isISODate, todayISO } from "@/lib/time";
 import { TaskSheet } from "@/components/TaskSheet";
+import { Loader } from "@/components/Loader";
 import type { Profile, Task } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -14,6 +16,15 @@ export default async function SheetPage({
   const today = todayISO();
   const date = isISODate(d) && d <= today ? d : today;
 
+  // Keyed by date so switching days shows the loader instead of the old day.
+  return (
+    <Suspense key={date} fallback={<Loader label="Loading the sheet…" />}>
+      <Sheet date={date} today={today} />
+    </Suspense>
+  );
+}
+
+async function Sheet({ date, today }: { date: string; today: string }) {
   const supabase = await createClient();
 
   // Opening today for the first time brings over yesterday's unfinished tasks.

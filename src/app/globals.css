@@ -9,6 +9,9 @@
   --color-sheet-green: #d9ead3;
   --color-sheet-yellow: #fff2cc;
   --color-sheet-line: #c9d3cc;
+
+  /* The orange from the logo. */
+  --color-brand: #f86a00;
 }
 
 :root {

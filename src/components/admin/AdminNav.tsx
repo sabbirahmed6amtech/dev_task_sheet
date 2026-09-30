@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -15,9 +16,7 @@ export function AdminNav() {
     <header className="border-b border-neutral-200 bg-white">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-4 pt-2.5 sm:px-6">
         <div className="flex items-center gap-2.5 pb-2.5">
-          <span className="grid size-7 place-items-center rounded-md bg-sheet-head text-[13px] font-bold text-white">
-            T
-          </span>
+          <Image src="/logo.png" alt="" width={28} height={28} priority className="size-7" />
           <span className="text-[15px] font-semibold">Admin</span>
         </div>
         <nav className="flex gap-1 self-end">

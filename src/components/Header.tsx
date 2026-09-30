@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -29,9 +30,7 @@ export function Header({
   return (
     <header className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-neutral-200 bg-white px-4 py-2.5">
       <div className="flex items-center gap-2.5 max-sm:flex-1">
-        <span className="grid size-7 place-items-center rounded-md bg-sheet-head text-[13px] font-bold text-white">
-          T
-        </span>
+        <Image src="/logo.png" alt="" width={28} height={28} priority className="size-7" />
         <span className="text-[15px] font-semibold">Dev Task Sheet</span>
       </div>
 

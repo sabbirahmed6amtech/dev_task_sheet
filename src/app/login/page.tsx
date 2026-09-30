@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
@@ -39,9 +40,7 @@ function LoginForm() {
   return (
     <form onSubmit={onSubmit} className="card w-full max-w-sm p-6">
       <div className="mb-5 flex items-center gap-2.5">
-        <span className="grid size-7 place-items-center rounded-md bg-sheet-head text-[13px] font-bold text-white">
-          T
-        </span>
+        <Image src="/logo.png" alt="" width={28} height={28} priority className="size-7" />
         <div className="leading-tight">
           <div className="text-[15px] font-semibold">Dev Task Sheet</div>
           <div className="text-[11px] text-neutral-500">Daily task sheet</div>
