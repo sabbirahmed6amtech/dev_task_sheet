@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Same palette as the Google Sheet the team is used to. */
+  --color-sheet-head: #3b6e57;
+  --color-sheet-head-dark: #2f5a47;
+  --color-sheet-green: #d9ead3;
+  --color-sheet-yellow: #fff2cc;
+  --color-sheet-line: #c9d3cc;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: #f6f7f9;
+  color: #1a1c1f;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .card {
+    @apply rounded-lg border border-neutral-200 bg-white shadow-[0_1px_2px_rgba(16,24,40,0.04)];
+  }
+
+  .btn {
+    @apply inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-[13px]
+           font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply border-transparent bg-sheet-head text-white hover:bg-sheet-head-dark;
+  }
+
+  .field {
+    @apply w-full rounded-md border border-neutral-300 bg-white px-2.5 py-1.5 text-[13px]
+           text-neutral-900 placeholder:text-neutral-400 focus:border-neutral-400 focus:outline-none;
+  }
+
+  .label {
+    @apply mb-1 block text-[11px] font-semibold uppercase tracking-wide text-neutral-500;
+  }
+
+  /* Sheet cells: borderless inputs that fill the cell, with a sheet-style
+     selection ring while editing. */
+  .cell {
+    @apply h-[36px] w-full min-w-0 truncate bg-transparent px-2.5 text-[13px] text-neutral-800
+           placeholder:text-neutral-400 focus:outline-2 focus:-outline-offset-2
+           focus:outline-sheet-head;
+  }
+
+  /* Admin tables in the sheet's look: green header row, cell borders, and rows
+     banded green / yellow like each dev's block on the sheet. */
+  .sheet-table {
+    @apply w-full border-separate border-spacing-0 overflow-hidden rounded-lg border border-sheet-head
+           bg-white text-[13px] text-neutral-800 shadow-sm;
+  }
+  .sheet-table th {
+    @apply h-10 bg-sheet-head px-3 text-left text-[11.5px] font-semibold uppercase tracking-wide
+           text-white;
+  }
+  .sheet-table td {
+    @apply border-r border-b border-sheet-line/60 px-3 py-2;
+  }
+  .sheet-table td:last-child {
+    @apply border-r-0;
+  }
+  .sheet-table tbody tr:last-child td {
+    @apply border-b-0;
+  }
+  .sheet-table tbody tr:nth-child(odd) td {
+    @apply bg-sheet-green;
+  }
+  .sheet-table tbody tr:nth-child(even) td {
+    @apply bg-sheet-yellow;
+  }
+
+  /* Status / priority: a plain select centred in its cell, no box of its own. */
+  .cell-select {
+    @apply h-[36px] w-full min-w-0 cursor-pointer appearance-none truncate bg-transparent px-2
+           text-center text-[13px] focus:outline-2 focus:-outline-offset-2 focus:outline-sheet-head;
+  }
+}
